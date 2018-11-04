@@ -220,5 +220,127 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>openBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-6</x>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveResults()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>256</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cropBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>cropImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-12</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>splitBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>splitImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-4</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>okUnit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>420</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>634</x>
+     <y>347</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>errorBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>errUnit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>645</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stopBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>stopUnit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>595</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>643</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadImage()</slot>
+  <slot>saveResults()</slot>
+  <slot>cropImage()</slot>
+  <slot>splitImage()</slot>
+  <slot>okUnit()</slot>
+  <slot>errUnit()</slot>
+  <slot>stopUnit()</slot>
+ </slots>
 </ui>

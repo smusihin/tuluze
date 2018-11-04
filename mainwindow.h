@@ -15,6 +15,18 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void loadImage();
+    void cropImage();
+    void splitImage();
+    void okUnit();
+    void errUnit();
+    void stopUnit();
+    void saveResults();
+
+
+
+
 private:
     Ui::MainWindow *ui;
 };
