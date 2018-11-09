@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "clipscene.h"
+#include "tuluze.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +31,10 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    ClipScene * generalScene;
+    QString currentImagePath;
+    tuluze tuluze_;
+
 };
 
 #endif // MAINWINDOW_H

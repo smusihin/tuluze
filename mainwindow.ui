@@ -14,23 +14,9 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1">
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Имя</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="openBtn">
-        <property name="text">
-         <string>Загрузить</string>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="2" colspan="2">
        <widget class="QTableWidget" name="tableWidget">
         <row>
@@ -95,30 +81,17 @@
         </column>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="cropBtn">
+        <property name="text">
+         <string>Кадрировать</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Фамилия</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="fileLbl">
-        <property name="text">
-         <string>Файл не выбран...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="surnameEdit"/>
-      </item>
-      <item row="4" column="2">
-       <widget class="QPushButton" name="cropBtn">
-        <property name="text">
-         <string>Кадрировать</string>
         </property>
        </widget>
       </item>
@@ -132,6 +105,13 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="firstnameEdit"/>
       </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Имя</string>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="2" colspan="2">
        <widget class="QPushButton" name="pushButton">
         <property name="text">
@@ -139,22 +119,42 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="2">
+      <item row="0" column="2">
+       <widget class="QLabel" name="fileLbl">
+        <property name="text">
+         <string>Файл не выбран...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_2"/>
+      </item>
+      <item row="5" column="2">
        <widget class="QPushButton" name="splitBtn">
         <property name="text">
          <string>Разбить</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0" rowspan="4" colspan="2">
-       <widget class="QOpenGLWidget" name="generalView"/>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="openBtn">
+        <property name="text">
+         <string>Загрузить</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="surnameEdit"/>
+      </item>
+      <item row="3" column="0" rowspan="3" colspan="2">
+       <widget class="QGraphicsView" name="generalView"/>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
       <item>
-       <widget class="QOpenGLWidget" name="unitView"/>
+       <widget class="QGraphicsView" name="unitView"/>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">

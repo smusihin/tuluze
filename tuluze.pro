@@ -26,10 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    clipscene.cpp \
+    tuluze.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    clipscene.h \
+    tuluze.h
 
 FORMS += \
         mainwindow.ui
