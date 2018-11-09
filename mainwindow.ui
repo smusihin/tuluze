@@ -82,9 +82,9 @@
        </widget>
       </item>
       <item row="4" column="2">
-       <widget class="QPushButton" name="cropBtn">
+       <widget class="QPushButton" name="resetBtn">
         <property name="text">
-         <string>Кадрировать</string>
+         <string>Сброс</string>
         </property>
        </widget>
       </item>
@@ -161,21 +161,21 @@
         <item>
          <widget class="QPushButton" name="okBtn">
           <property name="text">
-           <string>Ok</string>
+           <string>Ok (1)</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="errorBtn">
           <property name="text">
-           <string>Error</string>
+           <string>Error (2)</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="stopBtn">
           <property name="text">
-           <string>Stop</string>
+           <string>Stop (3)</string>
           </property>
          </widget>
         </item>
@@ -254,22 +254,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>cropBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>cropImage()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>254</x>
-     <y>305</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-12</x>
-     <y>317</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>splitBtn</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -292,8 +276,8 @@
    <slot>okUnit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>420</x>
-     <y>285</y>
+     <x>446</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
      <x>634</x>
@@ -308,8 +292,8 @@
    <slot>errUnit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>283</y>
+     <x>532</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
      <x>645</x>
@@ -324,8 +308,8 @@
    <slot>stopUnit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>595</x>
-     <y>281</y>
+     <x>618</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
      <x>643</x>
@@ -333,14 +317,30 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>resetBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>206</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-3</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>loadImage()</slot>
   <slot>saveResults()</slot>
-  <slot>cropImage()</slot>
   <slot>splitImage()</slot>
   <slot>okUnit()</slot>
   <slot>errUnit()</slot>
   <slot>stopUnit()</slot>
+  <slot>resetImage()</slot>
  </slots>
 </ui>

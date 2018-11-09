@@ -15,11 +15,11 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
 public slots:
     void loadImage();
-    void cropImage();
+    void resetImage();
     void splitImage();
     void okUnit();
     void errUnit();
@@ -29,11 +29,20 @@ public slots:
 
 
 
+
 private:
     Ui::MainWindow *ui;
-    ClipScene * generalScene;
-    QString currentImagePath;
+    ClipScene * scene_;
+    QString image_path_;
     tuluze tuluze_;
+    uint32_t current_row_;
+    uint32_t current_column_;
+    void change_unit();
+    void reload_unit();
+    void update_table();
+    void keyPressEvent(QKeyEvent *event) override;
+
+
 
 };
 
