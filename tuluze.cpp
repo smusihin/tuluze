@@ -1,5 +1,6 @@
 #include "tuluze.h"
 #include <QPainter>
+#include <set>
 
 const uint32_t column_count = 60;
 const uint32_t row_count = 10;
@@ -9,7 +10,7 @@ const double left_coef = 1.1/25.0;
 const double top_coef = 0.9/8.8;
 
 
-const std::vector<std::vector<uint32_t>> vert =
+const std::vector<std::set<uint32_t>> vert =
 {
     {1,3,8,13,17,19,24,28,31,35,39,46,48,53},
     {2,3,5,7,12,14,20,22,26,29,34,37,23,47,52,55,59},
@@ -69,7 +70,17 @@ QPixmap tuluze::split_image()
 
 QPixmap tuluze::get_unit(uint32_t row,uint32_t column)
 {
-    return copy(left_+ int(w_step_*column),top_+int(h_step_ *row), int(w_step_),int(h_step_));
+    auto pix = copy(left_+ int(w_step_*column),top_+int(h_step_ *row), int(w_step_),int(h_step_));
+    if(vert[row].find(column+1) != vert[row].end())
+    {
+        QPainter painter(&pix);
+        QPen pen;
+        pen.setWidth(3);
+        pen.setColor(Qt::yellow);
+        painter.setPen(pen);
+        painter.drawRect(1,1, int(w_step_-3),int(h_step_-3));
+    }
+    return pix;
 }
 
 QPixmap tuluze::select_unit(uint32_t row, uint32_t column)
