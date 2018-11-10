@@ -25,6 +25,7 @@ public slots:
     void errUnit();
     void stopUnit();
     void saveResults();
+    void rotate();
 
 
 

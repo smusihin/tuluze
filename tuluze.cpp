@@ -3,6 +3,27 @@
 
 const uint32_t column_count = 60;
 const uint32_t row_count = 10;
+const double width_coef = 27.1/25.0;
+const double height_coef = 6.9/8.8;
+const double left_coef = 1.1/25.0;
+const double top_coef = 0.9/8.8;
+
+
+const std::vector<std::vector<uint32_t>> vert =
+{
+    {1,3,8,13,17,19,24,28,31,35,39,46,48,53},
+    {2,3,5,7,12,14,20,22,26,29,34,37,23,47,52,55,59},
+    {1,7,10,16,20,23,27,28,32,37,44,51,54,58,60},
+    {2,4,10,16,21,23,28,32,38,44,50,55,56,59},
+    {3,7,12,14,15,22,24,26,33,35,42,46,53,58},
+    {2,3,4,10,17,19,26,28,32,38,39,41,44,44,49,53,59},
+    {1,3,8,11,15,21,23,30,33,39,41,46,50,52,56,60},
+    {1,6,7,14,17,20,24,29,32,36,40,42,44,48,51,55,55,58},
+    {2,3,8,12,15,19,22,24,26,27,29,33,25,37,45,49,53,56,60},
+    {1,2,5,7,13,14,15,21,25,28,33,40,42,46,49,58}
+};
+
+
 
 tuluze::tuluze()
 {
@@ -11,14 +32,24 @@ tuluze::tuluze()
 
 void tuluze::load_file(const QString &file)
 {
-    load(file);
+    QImage srcImg(file);
+    QPoint center = srcImg.rect().center();
+    QMatrix matrix;
+    matrix.translate(center.x(), center.y());
+    matrix.rotate(-90);
+    convertFromImage(srcImg.transformed(matrix));
+   // load(file);
     reset();
+}
+
+void tuluze::rotate()
+{
 }
 
 QPixmap tuluze::crop_image(int left, int top, int width, int height)
 {
     recalc(left,top,width,height);
-    return copy(left,top,width,height);
+    return copy(left_,top_,width_,height_);
 }
 
 QPixmap tuluze::split_image()
@@ -46,10 +77,10 @@ QPixmap tuluze::select_unit(uint32_t row, uint32_t column)
     auto result = copy(left_,top_,width_,height_);
     QPainter painter(&result);
     QPen pen;
-    pen.setWidth(2);
+    pen.setWidth(3);
     pen.setColor(Qt::green);
     painter.setPen(pen);
-    painter.drawRect(left_+ int(w_step_*column),top_+int(h_step_ *row), int(w_step_),int(h_step_));
+    painter.drawRect(int(w_step_*column),int(h_step_ *row), int(w_step_),int(h_step_));
     return result;
 }
 
@@ -95,7 +126,7 @@ std::pair<uint32_t, uint32_t> tuluze::results()
 
 void tuluze::reset()
 {
-    recalc(0,0,width(),height());
+    recalc(0,0,0,0);
     states_ = std::vector<State>(column_count *row_count,State::Not);
 }
 
@@ -109,12 +140,26 @@ uint32_t tuluze::columns()
     return column_count;
 }
 
-void tuluze::recalc(int left, int top, int width, int height)
+void tuluze::recalc(int left, int top, int w, int h)
 {
-    left_ = left;
-    top_= top;
-    width_ = width;
-    height_ = height;
+    left_ = left - int(w * left_coef);
+    top_= top + int(h * top_coef);
+    if(w)
+    {
+        width_ = int(w * width_coef);
+    }
+    else
+    {
+        width_ = width();
+    }
+    if(h != 0)
+    {
+        height_ = int(h * height_coef);
+    }
+    else
+    {
+        height_ = height();
+    }
     w_step_ = float(width_)/column_count;
     h_step_ = float(height_)/row_count;
 }

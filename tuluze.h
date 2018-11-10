@@ -14,6 +14,7 @@ class tuluze : public QPixmap
     };
     tuluze();
     void load_file(const QString & file);
+    void rotate();
     QPixmap crop_image(int left, int top, int width, int height);
     QPixmap split_image();
     QPixmap get_unit(uint32_t row,uint32_t column);

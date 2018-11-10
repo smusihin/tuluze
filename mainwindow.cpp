@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
         int32_t t = int32_t((top - rect_pixmap.top()) / scale_y);
         int32_t w = int32_t(width/scale_x);
         int32_t h = int32_t(height/scale_y);
-        scene_->setPixmap(tuluze_.crop_image(l,t,w,h));
+        scene_->setPixmap(tuluze_.crop_image(l,t,w,h));        
         ui->generalView->fitInView(scene_->itemsBoundingRect(), Qt::KeepAspectRatio);
     });
 
@@ -46,18 +46,19 @@ void MainWindow::loadImage()
 
 void MainWindow::resetImage()
 {
-    scene_->setPixmap(tuluze_);
-    ui->generalView->fitInView(scene_->itemsBoundingRect(), Qt::KeepAspectRatio);
     tuluze_.reset();
+    scene_->setPixmap(tuluze_);
+    ui->generalView->
+            fitInView(scene_->itemsBoundingRect(), Qt::KeepAspectRatio);
     current_column_ = 0;
     current_row_ = 0;
 }
 
 void MainWindow::splitImage()
 {
-    auto pixmap = tuluze_.split_image();
-    scene_->setPixmap(pixmap);
-    ui->unitView->scene()->addPixmap(tuluze_.get_unit(0,0));
+    tuluze_.split_image();
+    current_column_ = 0;
+    current_row_ = 0;
     reload_unit();
 }
 
@@ -84,7 +85,13 @@ void MainWindow::stopUnit()
 
 void MainWindow::saveResults()
 {
+    // QFile
+}
 
+void MainWindow::rotate()
+{
+  //  tuluze_.rotate();
+  //  resetImage();
 }
 
 void MainWindow::change_unit()
@@ -107,11 +114,9 @@ void MainWindow::reload_unit()
     ui->unitView->scene()->clear();
     ui->unitView->scene()->addPixmap(tuluze_.get_unit(current_row_,current_column_));
     ui->unitView->fitInView(ui->unitView->scene()->itemsBoundingRect(), Qt::KeepAspectRatio);
+
     scene_->setPixmap(tuluze_.select_unit(current_row_,current_column_));
     ui->generalView->fitInView(scene_->itemsBoundingRect(), Qt::KeepAspectRatio);
-
-
-
 }
 
 void MainWindow::update_table()

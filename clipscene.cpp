@@ -80,7 +80,7 @@ void ClipScene::setPixmap(const QPixmap &pixmap)
 {
     if (m_currentImageItem)
     {
-        this->removeItem(m_currentImageItem);
+        removeItem(m_currentImageItem);
     }
     m_currentImageItem = new QGraphicsPixmapItem(pixmap);
     addItem(m_currentImageItem);

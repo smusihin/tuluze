@@ -88,27 +88,13 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Фамилия</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Группа</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="firstnameEdit"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Имя</string>
+         <string>ФИО</string>
         </property>
        </widget>
       </item>
@@ -148,6 +134,13 @@
       </item>
       <item row="3" column="0" rowspan="3" colspan="2">
        <widget class="QGraphicsView" name="generalView"/>
+      </item>
+      <item row="4" column="3">
+       <widget class="QPushButton" name="rotateBtn">
+        <property name="text">
+         <string>Поворот</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -333,6 +326,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>rotateBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>rotate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>loadImage()</slot>
@@ -342,5 +351,6 @@
   <slot>errUnit()</slot>
   <slot>stopUnit()</slot>
   <slot>resetImage()</slot>
+  <slot>rotate()</slot>
  </slots>
 </ui>
