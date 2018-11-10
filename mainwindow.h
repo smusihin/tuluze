@@ -23,6 +23,7 @@ public slots:
     void splitImage();
     void okUnit();
     void errUnit();
+    void missUnit();
     void stopUnit();
     void saveResults();
     void rotate();
@@ -38,6 +39,10 @@ private:
     tuluze tuluze_;
     uint32_t current_row_;
     uint32_t current_column_;
+    void upUnit();
+    void downUnit();
+    void leftUnit();
+    void rightUnit();
     void change_unit();
     void reload_unit();
     void update_table();

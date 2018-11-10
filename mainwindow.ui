@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>630</width>
+    <width>685</width>
     <height>369</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1">
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="3" column="2" colspan="2">
+      <item row="2" column="2" colspan="2">
        <widget class="QTableWidget" name="tableWidget">
         <row>
          <property name="text">
@@ -81,16 +81,6 @@
         </column>
        </widget>
       </item>
-      <item row="4" column="2">
-       <widget class="QPushButton" name="resetBtn">
-        <property name="text">
-         <string>Сброс</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="firstnameEdit"/>
-      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
@@ -98,10 +88,27 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="2" colspan="2">
-       <widget class="QPushButton" name="pushButton">
+      <item row="2" column="0" rowspan="3" colspan="2">
+       <widget class="QGraphicsView" name="generalView"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="resetBtn">
         <property name="text">
-         <string>Сохранить результат</string>
+         <string>Сброс</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="splitBtn">
+        <property name="text">
+         <string>Разбить</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QPushButton" name="rotateBtn">
+        <property name="text">
+         <string>Поворот</string>
         </property>
        </widget>
       </item>
@@ -112,13 +119,10 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
-      </item>
-      <item row="5" column="2">
-       <widget class="QPushButton" name="splitBtn">
+      <item row="1" column="2" colspan="2">
+       <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string>Разбить</string>
+         <string>Сохранить результат</string>
         </property>
        </widget>
       </item>
@@ -129,18 +133,8 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="surnameEdit"/>
-      </item>
-      <item row="3" column="0" rowspan="3" colspan="2">
-       <widget class="QGraphicsView" name="generalView"/>
-      </item>
-      <item row="4" column="3">
-       <widget class="QPushButton" name="rotateBtn">
-        <property name="text">
-         <string>Поворот</string>
-        </property>
-       </widget>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="nameEdit"/>
       </item>
      </layout>
     </item>
@@ -161,14 +155,21 @@
         <item>
          <widget class="QPushButton" name="errorBtn">
           <property name="text">
-           <string>Error (2)</string>
+           <string>Ошибка(2)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="missBtn">
+          <property name="text">
+           <string>Пропуск(3)</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="stopBtn">
           <property name="text">
-           <string>Stop (3)</string>
+           <string>Стоп (Enter)</string>
           </property>
          </widget>
         </item>
@@ -196,7 +197,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>630</width>
+     <width>685</width>
      <height>22</height>
     </rect>
    </property>
@@ -225,7 +226,7 @@
      <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-6</x>
+     <x>0</x>
      <y>45</y>
     </hint>
    </hints>
@@ -253,11 +254,11 @@
    <slot>splitImage()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>260</x>
-     <y>332</y>
+     <x>240</x>
+     <y>336</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-4</x>
+     <x>0</x>
      <y>346</y>
     </hint>
    </hints>
@@ -269,7 +270,7 @@
    <slot>okUnit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>446</x>
+     <x>415</x>
      <y>272</y>
     </hint>
     <hint type="destinationlabel">
@@ -285,7 +286,7 @@
    <slot>errUnit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>532</x>
+     <x>501</x>
      <y>272</y>
     </hint>
     <hint type="destinationlabel">
@@ -321,7 +322,7 @@
      <y>297</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-3</x>
+     <x>0</x>
      <y>298</y>
     </hint>
    </hints>
@@ -342,6 +343,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>missBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>missUnit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>563</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>692</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>loadImage()</slot>
@@ -352,5 +369,6 @@
   <slot>stopUnit()</slot>
   <slot>resetImage()</slot>
   <slot>rotate()</slot>
+  <slot>missUnit()</slot>
  </slots>
 </ui>

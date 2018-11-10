@@ -4,6 +4,8 @@
 #include <QGraphicsItem>
 #include <QKeyEvent>
 
+const QString filename = "tuluze.csv";
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -76,6 +78,13 @@ void MainWindow::errUnit()
     change_unit();
 }
 
+void MainWindow::missUnit()
+{
+    tuluze_.set_state(current_row_,current_column_,tuluze::Not);
+    update_table();
+    change_unit();
+}
+
 void MainWindow::stopUnit()
 {
     current_column_ = tuluze_.columns() - 1;
@@ -85,13 +94,67 @@ void MainWindow::stopUnit()
 
 void MainWindow::saveResults()
 {
-    // QFile
+    QFile file(filename);
+    if (!file.open(QIODevice::Append | QIODevice::Text))
+              return;
+    QStringList data;
+    data.append(ui->nameEdit->text());
+    for (auto i=0; i<4; i++)
+    {
+        data.append("");
+    }
+    QStringList errors;
+    for(uint32_t i=0; i<tuluze_.rows();i++)
+    {
+        auto r = tuluze_.row_results(i);
+        data.append(QString::number(r.first));
+        errors.append(QString::number(r.second));
+    }
+    data.append(errors);
+    file.write((data.join(";")+"\n").toLocal8Bit());
+    file.close();
 }
 
 void MainWindow::rotate()
 {
   //  tuluze_.rotate();
-  //  resetImage();
+    //  resetImage();
+}
+
+void MainWindow::upUnit()
+{
+   if(current_row_ > 0)
+   {
+       current_row_--;
+       reload_unit();
+   }
+}
+
+void MainWindow::downUnit()
+{
+    if(current_row_ < tuluze_.rows()-1)
+    {
+        current_row_++;
+        reload_unit();
+    }
+}
+
+void MainWindow::leftUnit()
+{
+    if(current_column_ > 0)
+    {
+        current_column_--;
+        reload_unit();
+    }
+}
+
+void MainWindow::rightUnit()
+{
+    if(current_column_ < tuluze_.columns()-1)
+    {
+        current_column_++;
+        reload_unit();
+    }
 }
 
 void MainWindow::change_unit()
@@ -140,12 +203,19 @@ void MainWindow::update_table()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    switch (event->key())
+    auto key = event->key();
+    switch (key)
     {
     case Qt::Key_1: okUnit(); break;
     case Qt::Key_2: errUnit(); break;
-    case Qt::Key_3: stopUnit(); break;
+    case Qt::Key_3: missUnit(); break;
+    case Qt::Key_Enter: stopUnit(); break;
+    case Qt::Key_A: leftUnit(); break;
+    case Qt::Key_D: rightUnit(); break;
+    case Qt::Key_W: upUnit();break;
+    case Qt::Key_S: downUnit();break;
     default: break;
     }
+
     QWidget::keyPressEvent(event);
 }

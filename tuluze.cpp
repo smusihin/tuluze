@@ -71,7 +71,7 @@ QPixmap tuluze::split_image()
 QPixmap tuluze::get_unit(uint32_t row,uint32_t column)
 {
     auto pix = copy(left_+ int(w_step_*column),top_+int(h_step_ *row), int(w_step_),int(h_step_));
-    if(vert[row].find(column+1) != vert[row].end())
+    if(row < vert.size() && vert[row].find(column+1) != vert[row].end())
     {
         QPainter painter(&pix);
         QPen pen;
